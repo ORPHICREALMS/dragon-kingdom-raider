@@ -1,0 +1,7 @@
+{
+  "name": "dragon-raiders",
+  "version": "0.01",
+  "dependencies": {
+    "ws": "^8.19.0"
+  }
+}
