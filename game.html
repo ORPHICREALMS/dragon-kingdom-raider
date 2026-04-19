@@ -372,7 +372,9 @@ document.addEventListener('mousedown', e => {
 // ─── WEBSOCKET ────────────────────────────────────────────────────────────────
 let ws = null;
 function connectWS() {
-    ws = new WebSocket('ws://localhost:3001');
+    const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsHost = location.hostname === 'localhost' ? 'localhost:3001' : location.host;
+    ws = new WebSocket(wsProto + '//' + wsHost);
     ws.onopen = () => {
         ws.send(JSON.stringify({ type: 'join', name: myName }));
         document.getElementById('connLabel').textContent = 'CONNECTED';
